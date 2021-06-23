@@ -1,7 +1,6 @@
 
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
 import { NavService, Menu } from '../../services/nav.service';
 
 
@@ -11,6 +10,7 @@ import { NavService, Menu } from '../../services/nav.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() subscribers: any;
   public menuItems: Menu[];
   public items: Menu[];
   public openNav: boolean = false
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
 
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
-  constructor(public navServices: NavService, private authService: AuthService, private router: Router) { }
+  constructor(public navServices: NavService, private router: Router) { }
 
   ngOnInit() {
     this.setMenuItems()
@@ -51,10 +51,6 @@ export class HeaderComponent implements OnInit {
 
   getMenuIcon(menuItem) {
     return 'assets/images/icons/' + menuItem.icon + '.svg'
-  }
-
-  logout() {
-    this.authService.logout();
   }
 
 }

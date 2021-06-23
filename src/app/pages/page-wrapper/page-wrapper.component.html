@@ -1,15 +1,16 @@
 <div class="page-wrapper" id="canvas-bookmark">
-  <app-header></app-header>
+
+  <app-header [subscribers]="subscribers" ></app-header>
   <div class="page-body-wrapper">
     <div class="page-body  bg-white pt-5">
       <main class="container-fluid px-md-5 px-0">
-        <router-outlet></router-outlet>
+        <app-repos (subscriberEvent)="addSubscribers($event)" (projectEvent)="addProjects($event)"></app-repos>
       </main>
     </div>
     <!-- footer start-->
-    <!-- <footer class="footer">
-        <app-footer></app-footer>
-      </footer> -->
+    <footer class="footer">
+        <app-footer [projects]="projects"></app-footer>
+      </footer> 
     <!-- footer End -->
   </div>
 </div>

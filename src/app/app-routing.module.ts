@@ -1,23 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { PageWrapperComponent } from './pages/page-wrapper/page-wrapper.component';
+import { ReposComponent } from './pages/repos/repos.component';
 
-const routes: Routes = [ { path: '', redirectTo: '/dashboard/home', pathMatch: 'full' },
-{
-  path: 'dashboard',
-  component: PageWrapperComponent,
+const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  {
+    path: 'dashboard',
+    component: PageWrapperComponent,
     children: [
       {
-        path: 'home',
-
-        component: HomeComponent,
-      },]
-  }
-  ];
+        path: 'repos',
+    
+            component: ReposComponent,
+      },
+    ],
+  },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

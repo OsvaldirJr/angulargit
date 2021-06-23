@@ -1,3 +1,5 @@
+
+import { Constants } from "./../utils/constants";
 import { Injectable } from "@angular/core";
 
 @Injectable({
@@ -6,6 +8,9 @@ import { Injectable } from "@angular/core";
 export class LocalStorageService {
   constructor() { }
 
+
+ 
+
   setItem(key, value) {
     localStorage.setItem(key, value);
   }
@@ -13,4 +18,5 @@ export class LocalStorageService {
   clearLocalStorage() {
     localStorage.clear();
   }
+
 }

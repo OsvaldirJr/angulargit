@@ -20,6 +20,7 @@ export interface Menu {
 export class NavService {
   public screenWidth: any;
   public collapseSidebar: boolean = true;
+  public subs: any[];
 
   constructor() {
     this.onResize();
@@ -35,30 +36,8 @@ export class NavService {
   }
 
   USER_MENUITEMS: Menu[] = [
-    {
-      path: '/dashboard/coupons',
-      title: 'Cupons',
-      icon: 'fa-barcode',
-      type: 'link',
-    },
-    {
-      path: '/dashboard/orders',
-      title: 'Pedidos',
-      icon: 'fa-bell',
-      type: 'link',
-    },
-    {
-      path: '/dashboard/orders-history',
-      title: 'Histórico',
-      icon: 'fa-history',
-      type: 'link',
-    },
-    {
-      path: 'logout',
-      title: 'Sair',
-      icon: null,
-      type: 'out',
-    },
+    
   ];
   items = new BehaviorSubject<Menu[]>(this.USER_MENUITEMS);
+
 }

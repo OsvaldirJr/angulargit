@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from "@angular/common/http";
 import { Observable } from 'rxjs';
+import { BaseUrlTypeEnum } from '../../shared/utils/enums/base-url-type.enum'
 
 @Injectable({
   providedIn: 'root'

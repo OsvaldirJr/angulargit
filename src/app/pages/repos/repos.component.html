@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="container-fluid">
+        <div class="row justify-content-around">
+
+          <div class="card fixed-max-height shadow-none rounded border w-100 h-100">
+            <div class="card-body">
+              <div class="d-flex justify-content-between mb-3">
+                <h4 class="card-title mb-3">Repositories</h4>
+                <div class="d-flex justify-content-end">
+                  <label style="margin-top:3%">Organization: </label>
+                  <input  type="text" aria-label="Amount (to the nearest dollar)"
+                    class="form-control" [value]="org" (keydown.enter)="onEnter($event)"/>
+                  <div class="input-group-append"></div>
+                </div>
+              </div>
+              <div class="vertical-separator bg-gray"></div>
+              <div class="d-flex h-100 w-100 flex-column justify-content-center  p-5">
+                <div  class="checkbox checkbox-solid-primary" *ngFor="let repository of repositories">
+                  <input id="{{repository.id}}" type="checkbox" >
+                  <label for="{{repository.id}}" (click)="getReposSubscribers(repository.name)">{{repository.name}}</label></div>
+                </div>
+             
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

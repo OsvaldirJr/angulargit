@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Menu, NavService } from 'src/app/shared/services/nav.service';
 
@@ -8,9 +8,12 @@ import { Menu, NavService } from 'src/app/shared/services/nav.service';
   styleUrls: ['./page-wrapper.component.scss']
 })
 export class PageWrapperComponent implements OnInit {
-
+  public subscribers=0;
+  public projects=0;
+  
   public currentMenuItem: Menu;
   public menuItems: Menu[];
+  
 
   constructor(public navService: NavService, private router: Router) { }
 
@@ -35,5 +38,13 @@ export class PageWrapperComponent implements OnInit {
 
   setNavActive(item) {
     this.currentMenuItem = this.menuItems.find(menuItem => menuItem == item);
+  }
+
+  addSubscribers(newItem) {
+    this.subscribers = newItem;
+  }
+  addProjects(newItem) {
+    this.projects = newItem;
+    
   }
 }

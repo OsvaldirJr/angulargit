@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://dev.mobo.com.br/api/v1',
-  absoluteUrl: 'https://dev.mobo.com.br',
-  awsBase: 'https://dev-dragon-dowing-images.s3-sa-east-1.amazonaws.com',
-  awsBaseFiles: 'https://dev-dragon-dowing-images.s3-sa-east-1.amazonaws.com/files',
+  baseUrl: 'https://api.github.com',
+  absoluteUrl: 'https://api.github.com',
+  awsBase: '',
+  awsBaseFiles: '',
 };
 
 /*
