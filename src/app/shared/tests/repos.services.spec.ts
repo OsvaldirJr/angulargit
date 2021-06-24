@@ -14,12 +14,12 @@ describe('RepoService', () => {
     beforeEach(() => { service = new RepoService(baseService, httpClientSpy); });
   
     it('#getAllPublicRepos should return some value', () => {
-      expect(service.getSubscribersRepos("adplabs","JQL")).not.toBeNull();
+      expect(service.getSubscribersRepos("adplabs")).not.toBeNull();
     });
   
     it('#getAllPublicRepos should return value from observable',
       (done: DoneFn) => {
-      service.getSubscribersRepos("adplabs","JQL").subscribe(value => {
+      service.getSubscribersRepos("adplabs").subscribe(value => {
         expect(value).not.toBeNull();
         done();
       });

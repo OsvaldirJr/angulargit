@@ -15,7 +15,7 @@ export class RepoService {
 
   }
 
-  getSubscribersRepos(org:string, repo: string) : Observable<Subscriber[]>{
-    return this.baseService.get(`repos/${org}/${repo}/subscribers`);
+  getSubscribersRepos(url:String) : Observable<Subscriber[]>{
+    return this.http.get<Subscriber[]>(`${url}`);
   }
 }

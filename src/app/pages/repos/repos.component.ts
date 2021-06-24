@@ -31,14 +31,14 @@ export class ReposComponent implements OnInit {
   }
   public getRepositories(){
     this.userService.getAllPublicRepos(this.org).subscribe(r=>{
-      console.log(r)
       this.repositories = r;
     })
   }
 
   public getReposSubscribers(name){
+    let repository = this.repositories.find(x=>x.name == name);
     if(!this.reposSelected.find(x=>x.name == name)){
-      this.repoService.getSubscribersRepos(this.org, name).subscribe(s=>{
+      this.repoService.getSubscribersRepos(repository.subscribers_url).subscribe(s=>{
             this.reposCount = this.reposCount + s.length;
             this.reposSelected.push({name, s});
             this.addSubscriberItem(this.reposCount);
