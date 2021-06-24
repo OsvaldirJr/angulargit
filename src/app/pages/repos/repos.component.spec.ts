@@ -11,22 +11,25 @@ import { of } from 'rxjs';
 import { BaseService } from '../../shared/services/base.service';
 import { RepoService } from '../../shared/services/repos.service';
 import { UserService } from '../../shared/services/user.service';
+import {Repository} from '../../shared/models/repository.model'
 
 import { ReposComponent } from './repos.component';
+import { reposMock } from '../../shared/tests/mocks/repos.mock';
+import { Subscriber } from '../../shared/models/subscriber.model';
+import { subscribersMock } from '../../shared/tests/mocks/subscriber.mock';
 
 describe('ReposComponent', () => {
   let component: ReposComponent;
   let fixture: ComponentFixture<ReposComponent>;
 
-  const expectedRepos: any[] =
-    [{ id: 1, name: 'JQL' }, { id: 2, name: 'unicorn' }];
+  const expectedRepos: Repository[] = reposMock;
+    
   
     let userHttpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     let userbaseService: BaseService = new BaseService(userHttpClientSpy);
     userHttpClientSpy.get.and.returnValue(of((expectedRepos)));
 
-    const expectedSubs: any[] =
-    [{ id: 1, login: 'alvarow' }, { id: 2, name: 'MadGeometer' }];
+    const expectedSubs: Subscriber[] =subscribersMock;
 
     let httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     let reposBaseService: BaseService = new BaseService(userHttpClientSpy);
@@ -58,7 +61,7 @@ describe('ReposComponent', () => {
     fixture = TestBed.createComponent(ReposComponent);
     let userService = new UserService(userbaseService, httpClientSpy);
     let reposService = new RepoService(reposBaseService, httpClientSpy);
-    component = new ReposComponent(null,userService,reposService);
+    component = new ReposComponent(userService,reposService);
     fixture.detectChanges();
   });
 
@@ -79,21 +82,25 @@ describe('ReposComponent', () => {
   });
 
   it('number of repositories should not to be null when getReposSubscribers was called', () => {
-    component.getReposSubscribers("adplabs");
+    component.repositories = expectedRepos;
+    component.getReposSubscribers("JQL");
     expect(component.reposCount).not.toBeNull();
   });
   
   it('selected repositories should not to be null when getReposSubscribers was called', () => {
-    component.getReposSubscribers("adplabs");
+    component.repositories = expectedRepos;
+    component.getReposSubscribers("JQL");
     expect(component.reposSelected).not.toBeNull();
   });
 
   it('number of repositories should not to be zero when getReposSubscribers was called', () => {
-    component.getReposSubscribers("adplabs");
+    component.repositories = expectedRepos;
+    component.getReposSubscribers("JQL");
     expect(component.reposCount).not.toBe(0);
   });
   it('selected repositories should not to be empty when getReposSubscribers was called', () => {
-    component.getReposSubscribers("adplabs");
+    component.repositories = expectedRepos;
+    component.getReposSubscribers("JQL");
     expect(component.reposSelected).not.toBe([]);
   });
 });
