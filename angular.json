@@ -54,7 +54,7 @@
               "photoswipe/dist/photoswipe-ui-default",
               "angular-calendar/date-adapters/date-fns"
             ],
-            "outputPath": "dist//MoboAnunciante",
+            "outputPath": "dist/angular-git",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
